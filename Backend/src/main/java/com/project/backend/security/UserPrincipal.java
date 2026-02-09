@@ -23,7 +23,7 @@ public class UserPrincipal implements UserDetails {
         this.email = user.getEmail();
         this.password = user.getPassword();
         this.role = user.getRole();
-        this.enabled = user.isEnabled();
+        this.enabled = user.getEnabled();
     }
 
     @Override
