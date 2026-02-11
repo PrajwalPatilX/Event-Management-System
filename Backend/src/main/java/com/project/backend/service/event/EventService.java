@@ -80,6 +80,13 @@ public class EventService {
 
         return mapToResponse(event);
     }
+    public List<EventResponse> getAll() {
+
+        return eventRepository.findAll()
+                .stream()
+                .map(this::mapToResponse)
+                .collect(Collectors.toList());
+    }
 
     // Public: List Published Events
     public List<EventResponse> getPublished() {

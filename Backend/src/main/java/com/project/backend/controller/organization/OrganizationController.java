@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/v1/organizations")
 public class OrganizationController {
@@ -43,7 +44,7 @@ public class OrganizationController {
     }
 
     // Admin: approve/reject
-    @PatchMapping("/{id}/status")
+    @PostMapping("/{id}/status")
     public ResponseEntity<OrganizationResponse> updateStatus(
             @PathVariable Long id,
             @RequestParam OrganizationStatus status) {

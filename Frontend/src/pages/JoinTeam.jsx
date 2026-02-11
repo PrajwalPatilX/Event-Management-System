@@ -7,12 +7,12 @@ export default function JoinTeam() {
   async function handleJoin() {
     try {
       await API.post("/teams/join", {
-        inviteCode: teamCode,
+        joinCode: teamCode,
       });
 
-      alert("Joined successfully. Welcome to group chaos.");
+      alert("Joined successfully. Welcome to team.");
     } catch {
-      alert("Join failed. Wrong code or destiny said no.");
+      alert("Join failed. Wrong code.");
     }
   }
 

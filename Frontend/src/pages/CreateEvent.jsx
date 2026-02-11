@@ -4,10 +4,11 @@ import API from "../api";
 
 export default function CreateEvent() {
   const [form, setForm] = useState({
-    name: "",
+    title: "",
     description: "",
-    date: "",
-    location: "",
+    startTime: "",
+    endTime:"",
+    organizationId:"",
   });
 
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function CreateEvent() {
 
     try {
       await API.post("/events", form);
-      alert("Event created. Try not to break it.");
+      alert("Event created.");
       navigate("/dashboard");
     } catch {
       alert("Backend said no. Shocking.");
@@ -33,7 +34,7 @@ export default function CreateEvent() {
       <h2>Create Event</h2>
 
       <form onSubmit={handleSubmit}>
-        <input name="name" placeholder="Event Name" onChange={handleChange} />
+        <input name="title" placeholder="Event Name" onChange={handleChange} />
         <br />
 
         <textarea
@@ -43,10 +44,13 @@ export default function CreateEvent() {
         />
         <br />
 
-        <input type="date" name="date" onChange={handleChange} />
+        <input type="date" name="startTime" onChange={handleChange} />
         <br />
 
-        <input name="location" placeholder="Location" onChange={handleChange} />
+        <input type="date" name="endTime" onChange={handleChange} />
+        <br />
+
+        <input name="organizationId" placeholder="OrganizationId" onChange={handleChange} />
         <br />
 
         <button>Create Event</button>

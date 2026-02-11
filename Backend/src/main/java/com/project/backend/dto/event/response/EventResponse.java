@@ -2,6 +2,7 @@ package com.project.backend.dto.event.response;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -13,8 +14,8 @@ public class EventResponse {
     private String description;
     private String status;
 
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private Date startTime;
+    private Date endTime;
 
     private String organizationName;
     private String organizerEmail;

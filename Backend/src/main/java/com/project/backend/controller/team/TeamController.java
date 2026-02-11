@@ -2,14 +2,13 @@ package com.project.backend.controller.team;
 
 import com.project.backend.dto.registration.request.CreateTeamRequest;
 import com.project.backend.dto.registration.request.JoinTeamRequest;
+import com.project.backend.dto.team.response.TeamResponse;
 import com.project.backend.entity.Team;
 import com.project.backend.service.team.TeamService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("/api/v1/teams")
@@ -22,7 +21,7 @@ public class TeamController {
     }
 
     @PostMapping
-    public ResponseEntity<Team> create(
+    public ResponseEntity<TeamResponse> create(
             @RequestBody CreateTeamRequest request,
             Authentication auth) {
 

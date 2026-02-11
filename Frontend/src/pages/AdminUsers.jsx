@@ -8,21 +8,22 @@ export default function AdminUsers() {
     API.get("/admin/users")
       .then((res) => setUsers(res.data))
       .catch(() =>
-        alert("Admin access denied. Someone lied about their role."),
+        alert("Admin access denied."),
       );
   }, []);
 
   async function toggleUser(id, currentStatus) {
     try {
-      await API.patch(`/admin/users/${id}/status?enabled=${!currentStatus}`);
+      await API.post(`/admin/users/${id}/status`, null, {
+      params: { enabled: !currentStatus }
+    });
       setUsers(
         users.map((u) => (u.id === id ? { ...u, enabled: !currentStatus } : u)),
       );
     } catch {
-      alert("Backend said no. Admin privileges revoked by vibes.");
+      alert("Backend said no.");
     }
   }
-
   return (
     <div>
       <h2>Admin: User Management</h2>
@@ -34,6 +35,9 @@ export default function AdminUsers() {
         >
           <p>
             <strong>Email:</strong> {user.email}
+          </p>
+          <p>
+            <strong>Role :</strong> {user.role}
           </p>
           <p>
             <strong>Status:</strong> {user.enabled ? "Active" : "Disabled"}
