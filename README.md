@@ -29,7 +29,7 @@ A sophisticated, role-based event management platform designed to handle the ful
 
 ---
 
-## 💻 Tech Stack
+##  Tech Stack
 
 ### Backend (Java Spring Boot)
 
@@ -111,7 +111,7 @@ npm run dev
 
 ---
 
-## 🧠 Challenges Overcome
+##  Challenges Overcome
 
 * **Complex Permissions:** Implemented a custom `JwtAuthenticationFilter` and `SecurityConfig` to ensure that Participants cannot access Organizer tools, even if they know the API endpoints.
 * **State Synchronization:** Managed complex UI states in React to ensure the "Publish" or "Close" buttons only appear based on the current backend `EventStatus`.
