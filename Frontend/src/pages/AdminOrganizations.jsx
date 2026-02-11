@@ -6,7 +6,7 @@ export default function AdminOrganizations() {
 
   async function updateStatus(status) {
     try {
-      await API.patch(`/organizations/${orgId}/status?status=${status}`);
+      await API.post(`/organizations/${orgId}/status?status=${status}`);
       alert(`Organization ${status}. Power feels heavy.`);
     } catch {
       alert("Update failed. Authority questioned.");

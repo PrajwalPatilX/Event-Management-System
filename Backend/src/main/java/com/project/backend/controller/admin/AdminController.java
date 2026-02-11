@@ -19,7 +19,6 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    // Get All Users
     @GetMapping("/users")
     public ResponseEntity<List<UserSummaryResponse>> getUsers() {
 
@@ -28,8 +27,7 @@ public class AdminController {
         );
     }
 
-    // Enable / Disable User
-    @PatchMapping("/users/{id}/status")
+    @PostMapping("/users/{id}/status")
     public ResponseEntity<String> updateUserStatus(
             @PathVariable Long id,
             @RequestParam boolean enabled) {
@@ -39,7 +37,6 @@ public class AdminController {
         return ResponseEntity.ok("User status updated");
     }
 
-    // Get Event Registrations
     @GetMapping("/events/{eventId}/registrations")
     public ResponseEntity<List<RegistrationSummaryResponse>>
     getRegistrations(@PathVariable Long eventId) {
@@ -49,8 +46,7 @@ public class AdminController {
         );
     }
 
-    // Approve / Reject Registration
-    @PatchMapping("/registrations/{id}/status")
+    @PostMapping("/registrations/{id}/status")
     public ResponseEntity<String> updateRegistrationStatus(
             @PathVariable Long id,
             @RequestParam RegistrationStatus status) {
@@ -60,7 +56,6 @@ public class AdminController {
         return ResponseEntity.ok("Registration status updated");
     }
 
-    // Report: Totals
     @GetMapping("/reports/summary")
     public ResponseEntity<String> getSummary() {
 

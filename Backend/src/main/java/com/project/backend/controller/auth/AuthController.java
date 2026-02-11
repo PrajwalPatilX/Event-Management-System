@@ -16,6 +16,7 @@ public class AuthController {
         this.authService = authService;
     }
 
+
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(
             @RequestBody RegisterRequest request) {
@@ -29,4 +30,9 @@ public class AuthController {
 
         return ResponseEntity.ok(authService.login(request));
     }
+
+        @PostMapping("/logout")
+        public ResponseEntity<String> logout() {
+            return ResponseEntity.ok("Logged out successfully");
+        }
 }

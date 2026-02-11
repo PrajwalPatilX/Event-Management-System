@@ -19,7 +19,7 @@ export default function Login() {
       localStorage.setItem("token", res.data.token);
       navigate("/dashboard");
     } catch (err) {
-      alert("Login failed. Your backend is unimpressed.");
+      alert("Login failed. ");
     }
   }
 

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Getter
@@ -29,10 +30,10 @@ public class Event {
     private EventStatus status;
 
     @Column(nullable = false)
-    private LocalDateTime startTime;
+    private Date startTime;
 
     @Column(nullable = false)
-    private LocalDateTime endTime;
+    private Date endTime;
 
     // Organization
     @ManyToOne(fetch = FetchType.LAZY)

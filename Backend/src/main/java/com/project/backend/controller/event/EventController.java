@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/v1/events")
 public class EventController {
@@ -19,7 +20,7 @@ public class EventController {
         this.eventService = eventService;
     }
 
-    // Organizer: Create
+
     @PostMapping
     public ResponseEntity<EventResponse> create(
             @RequestBody CreateEventRequest request,
@@ -32,7 +33,7 @@ public class EventController {
         );
     }
 
-    // Organizer: Publish
+
     @PostMapping("/{id}/publish")
     public ResponseEntity<EventResponse> publish(@PathVariable Long id) {
 
@@ -41,7 +42,6 @@ public class EventController {
         );
     }
 
-    // Organizer: Close Registration
     @PostMapping("/{id}/close")
     public ResponseEntity<EventResponse> close(@PathVariable Long id) {
 
@@ -50,7 +50,16 @@ public class EventController {
         );
     }
 
-    // Public: View Published Events
+    @GetMapping()
+    public ResponseEntity<List<EventResponse>> getAll() {
+
+        return ResponseEntity.ok(
+                eventService.getAll()
+        );
+    }
+
+
+
     @GetMapping("/published")
     public ResponseEntity<List<EventResponse>> getPublished() {
 

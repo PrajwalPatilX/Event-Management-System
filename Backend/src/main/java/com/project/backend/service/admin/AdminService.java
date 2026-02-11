@@ -33,13 +33,13 @@ public class AdminService {
 
         return userRepository.findAll()
                 .stream()
-                .filter(u -> !u.isDeleted())
+                .filter(u -> !u.getDeleted())
                 .map(u -> new UserSummaryResponse(
                         u.getId(),
                         u.getFullName(),
                         u.getEmail(),
                         u.getRole().name(),
-                        u.isEnabled()
+                        u.getEnabled()
                 ))
                 .collect(Collectors.toList());
     }

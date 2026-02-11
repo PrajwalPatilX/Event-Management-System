@@ -7,11 +7,13 @@ import com.project.backend.entity.User;
 import com.project.backend.repository.AnnouncementRepository;
 import com.project.backend.repository.EventRepository;
 import com.project.backend.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class AnnouncementService {
 
@@ -19,13 +21,6 @@ public class AnnouncementService {
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
 
-    public AnnouncementService(AnnouncementRepository announcementRepository,
-                               EventRepository eventRepository,
-                               UserRepository userRepository) {
-        this.announcementRepository = announcementRepository;
-        this.eventRepository = eventRepository;
-        this.userRepository = userRepository;
-    }
 
     // Create Announcement
     public AnnouncementResponse create(CreateAnnouncementRequest request,
@@ -38,9 +33,8 @@ public class AnnouncementService {
                 .orElseThrow(() -> new RuntimeException("Event not found"));
 
         Announcement announcement = new Announcement();
-
-        announcement.setTitle(request.getTitle());
         announcement.setMessage(request.getMessage());
+        announcement.setTitle(event.getTitle());
         announcement.setEvent(event);
         announcement.setCreatedBy(user);
 

@@ -14,15 +14,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
-import "./App.css";
+import AdminReport from "./pages/AdminReport";
+import EventActions from "./pages/EventActions";
+import Header from "./components/Header";
 export default function App() {
   return (
     <BrowserRouter>
+    <Header />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/report" element={<AdminReport />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create-event" element={<CreateEvent />} />
+        <Route path="/manage-events" element={<EventActions />} />
         <Route path="/admin/users" element={<AdminUsers />} />
         <Route path="/checkin" element={<AttendanceCheckIn />} />
         <Route path="/attendance" element={<AttendanceViewer />} />
